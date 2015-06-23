@@ -6,7 +6,7 @@ class Takeaway
   #attr_reader :menu
   attr_reader :order_list
   attr_reader :total_price
-  attr_reader :check_price
+  #attr_reader :check_price
 
 
   def initialize(texter, menu)
@@ -25,24 +25,25 @@ class Takeaway
   end
 
   def check_price(price)
-    @check_price = (price == order_total)? true : false
-    if @check_price == true
+    if (price == order_total)
       puts 'Please go ahead and confirm the order'
+      return true
     else
       puts 'Please check the price again before confirming the order'
+      return false
     end
-    @check_price
   end
 
   def order_total
-    @order_list.each do |x|   
-      @total_price += @menu.fetch(x)
+    @order_list.each do |x|  
+      price = menu.fetch(x) 
+      @total_price += price
     end
     @total_price
   end
 
   def confirm_order
-    fail 'Please check the price again' if @check_price == false
+    fail 'Please check the price again' if check_price == false
     @texter.send
   end
 end

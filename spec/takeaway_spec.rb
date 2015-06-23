@@ -46,9 +46,10 @@ describe Takeaway do
 
   describe 'check_price' do
     it 'compares the expected price with the order price' do
-      subject.order('tempura', 1)
-      subject.order('gyoza', 1)
-      subject.order('tempura', 1)
+      # subject.order('tempura', 1)
+      # subject.order('gyoza', 1)
+      # subject.order('tempura', 1)
+      allow(subject).to receive(:order_total).and_return(19)
       expect(subject.check_price(19)).to eq(true)
     end
   end

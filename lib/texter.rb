@@ -10,7 +10,7 @@ class Texter
   def send
     'message sent'
     @client.account.messages.create({
-    :from => '441227641157', 
+    :from => '15005550006', 
     :to =>   '+447428121604',
     :body => 'test message'
     })

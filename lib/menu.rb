@@ -13,4 +13,9 @@ class Menu
   def show
     @menu
   end
+
+  def fetch(item)
+    @menu[item]
+    #puts value of the key where the item is the key
+  end
 end
