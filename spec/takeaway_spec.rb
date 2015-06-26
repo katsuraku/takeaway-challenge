@@ -3,11 +3,14 @@ require 'takeaway'
 describe Takeaway do
 
   let(:texter) { double :texter, send: 'message sent' }
-  let(:menu) { double :menu }
+  let(:menu) { double :menu, menu: { 'tempura'     => 8,
+                  'okonomiyaki' => 7,
+                  'yakisoba'    => 6,
+                  'gyoza'       => 3 }}
   subject { Takeaway.new(texter, menu) }
 
   #it { is_expected.to respond_to :menu }
-  
+
   it { is_expected.to respond_to :show_menu }
 
   describe 'show_menu' do
@@ -17,7 +20,7 @@ describe Takeaway do
   end
 
   it { is_expected.to respond_to(:order).with(2).arguments }
-  
+
   it { is_expected.to respond_to(:order_list) }
 
   it { is_expected.to respond_to(:check_price).with(1).argument }
@@ -26,7 +29,7 @@ describe Takeaway do
 
   it { is_expected.to respond_to(:confirm_order) }
 
-  describe 'order_list' do 
+  describe 'order_list' do
     it 'keeps track of the items ordered and number of each' do
       subject.order('tempura', 1)
       subject.order('gyoza', 1)
