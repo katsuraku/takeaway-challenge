@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
 
   let(:texter) { double :texter, send: 'message sent' }
-  let(:menu) { double :menu, menu: { 'tempura'     => 8,
+  let(:menu) { double :menu, price_list: { 'tempura'     => 8,
                   'okonomiyaki' => 7,
                   'yakisoba'    => 6,
                   'gyoza'       => 3 }}
@@ -49,9 +49,6 @@ describe Takeaway do
 
   describe 'check_price' do
     it 'compares the expected price with the order price' do
-      # subject.order('tempura', 1)
-      # subject.order('gyoza', 1)
-      # subject.order('tempura', 1)
       allow(subject).to receive(:order_total).and_return(19)
       expect(subject.check_price(19)).to eq(true)
     end

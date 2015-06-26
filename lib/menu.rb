@@ -1,9 +1,9 @@
 class Menu
 
-  attr_reader :menu
+  attr_reader :price_list
 
   def initialize
-    @menu = { 'tempura'     => 8,
+    @price_list = { 'tempura'     => 8,
               'okonomiyaki' => 7,
               'yakisoba'    => 6,
               'gyoza'       => 3
@@ -11,11 +11,11 @@ class Menu
   end
 
   def show
-    @menu
+    @price_list
   end
 
   def fetch(item)
-    @menu[item]
+    @price_list[item]
     #puts value of the key where the item is the key
   end
 end

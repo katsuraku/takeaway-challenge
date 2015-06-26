@@ -36,7 +36,7 @@ class Takeaway
 
   def order_total
     @order_list.each do |x|
-      price = @menu.menu.fetch(x) 
+      price = @menu.price_list.fetch(x)
       @total_price += price
     end
     @total_price
