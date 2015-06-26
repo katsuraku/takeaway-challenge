@@ -25,12 +25,13 @@ class Takeaway
   end
 
   def check_price(price)
+    @check_price
     if (price == order_total)
       puts 'Please go ahead and confirm the order'
-      return true
+      @check_price = true
     else
       puts 'Please check the price again before confirming the order'
-      return false
+      @check_price = false
     end
   end
 
@@ -43,7 +44,7 @@ class Takeaway
   end
 
   def confirm_order
-    fail 'Please check the price again' if check_price == false
+    fail 'Please check the price again' if @check_price == false
     @texter.send
   end
 end
